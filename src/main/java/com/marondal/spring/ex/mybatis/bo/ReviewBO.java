@@ -18,4 +18,15 @@ public class ReviewBO {
 		
 		return review;
 	}
+	
+	public int addReview(int storeId, String menu, String userName, double point, String review) {//insert라서 데이터가 많이 사용됨
+		
+		return reviewDAO.insertReview(storeId, menu, userName, point, review);//자동생성 되지만 순서 확인해주면좋다.
+		//리턴타입 준담에 리턴 해주기
+	}
+	
+	
+	public int addReviewByObject(Review review) {//행의갯수리턴
+		return reviewDAO.insertReviewByObject(review);
+	}
 }

@@ -23,5 +23,60 @@
   			`id` = #{id}	
   				
   	</select>
+  	
+  	
+  	<insert id="insertReview" parameterType="map"><!-- insert는 전달되는값만 정확하게 적어주기 -->
+  		INSERT INTO
+  			`new_review`
+  		(
+  			`storeId`
+  			, `menu`
+  			, `userName`
+  			, `point`
+  			, `review`
+  			, `createdAt`
+  			, `updatedAt`
+  			
+  		)
+  		VALUE
+  		(
+  			#{storeId}
+  			,	#{menu}
+  			,	#{userName}
+  			,	#{point}
+  			,	#{review}
+  			,	now()
+  			,	now()
+  		)
+  		
+  			
+  	
+  	</insert>
+  	
+  	<insert id="insertReviewByObject" parameterType="com.marondal.spring.ex.mybatis.model.Review">
+  		INSERT INTO
+  			`new_review`
+  		(
+  			`storeId`
+  			, `menu`
+  			, `userName`
+  			, `point`
+  			, `review`
+  			, `createdAt`
+  			, `updatedAt`
+  			
+  		)
+  		VALUE
+  		(
+  			#{storeId}
+  			,	#{menu}
+  			,	#{userName}
+  			,	#{point}
+  			,	#{review}
+  			,	now()
+  			,	now()
+  		)
+  	
+  	</insert>
   
   </mapper>
