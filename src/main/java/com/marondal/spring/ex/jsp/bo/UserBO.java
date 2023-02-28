@@ -19,7 +19,7 @@ public class UserBO {
 		
 	}
 	
-	public  User getLastUser() {//model User로 임포트
+	public User getLastUser() {//model User로 임포트
 		
 		return userDAO.selectLastUser();// 다오 메소드 호출
 	}

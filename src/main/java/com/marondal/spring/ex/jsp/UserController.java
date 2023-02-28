@@ -35,7 +35,7 @@ public class UserController {
 			
 	}
 	
-	
+	@GetMapping("/input")
 	public String userInput(){//메소드명은 아무의미없다는것. 파라미터 x 		
 		return "jsp/userInput";		
 	}
