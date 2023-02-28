@@ -22,17 +22,32 @@ public class UserController {
 	// 이름, 생년월일, 이메일, 자기소개 전달 받고 데이터 저장
 //	@RequestMapping(path ="/add", method=RequestMethod.POST) //기본이 겟메소드임 보통	
 	@PostMapping("/add")//축약하는 어노테이션이 따로 존재함
-	@ResponseBody
+//	@ResponseBody 지금은 jsp로 화면구성하기 땜에 없어도 됨 경로 구성
 	public String addUser(
 			@RequestParam("name")String name 
 			, @RequestParam("birthday")String birthday
 			, @RequestParam("email")String email 
-			, @RequestParam("introduce")String introduce) {//parameter로 전달받는다.
+			, @RequestParam("introduce")String introduce
+			, Model model) {//parameter로 전달받는다.
 			
-		int count = userBO.addUser(name, birthday, email, introduce);
+//		int count = userBO.addUser(name, birthday, email, introduce);
+//		
+//		return "삽입결과 : " + count;
 		
-		return "삽입결과 : " + count;
-			
+		// 방금 insert한 id를 얻어 온다
+		// 객체로 전달
+		User user = new User();
+		user.setName(name);
+		user.setYyyymmdd(birthday);
+		user.setEmail(email);
+		user.setIntroduce(introduce);
+		
+		int count = userBO.addUserByObject(user);
+		
+		model.addAttribute("user", user);
+		
+		return "jsp/lastuser";
+		
 	}
 	
 	@GetMapping("/input")

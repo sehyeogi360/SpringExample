@@ -19,6 +19,12 @@ public class UserBO {
 		
 	}
 	
+	public int addUserByObject(User user) {
+		return userDAO.insertUserByObject(user);
+		
+		
+	}
+	
 	public User getLastUser() {//model User로 임포트
 		
 		return userDAO.selectLastUser();// 다오 메소드 호출

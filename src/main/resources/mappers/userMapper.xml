@@ -29,6 +29,33 @@
 
 </insert>
 
+<insert id="insertUserByObject" parameterType="com.marondal.spring.ex.jsp.model.User" 
+useGeneratedKeys="true" keyProperty = "id"><!-- 직접 만드는게 아니라서 경로넣기 -->
+	INSERT INTO
+  			`new_user`
+  		(
+  			`name`,
+  			`yyyymmdd`,
+  			`email`,
+  			`introduce`,
+  			`createdAt`,
+  			`updatedAt`
+  		)	
+  		VALUE
+  		(
+  			#{name},
+  			#{yyyymmdd},
+  			#{email},
+  			#{introduce},
+  			now(),
+  			now()
+  		
+  		)
+</insert>
+
+
+
+
 <select id ="selectLastUser" resultType="com.marondal.spring.ex.jsp.model.User"><!-- 다오서 메소드명 복사해오기 -->
 	SELECT 
 			`id`,
