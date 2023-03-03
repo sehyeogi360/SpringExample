@@ -44,9 +44,30 @@
 		<h4>${fruit } :::: ${status.count } ${status.index} ${status.first} ${status.last}</h4>
 	</c:forEach><%--count는 숫자별로 1 2 3 인덱스는 인덱스 기준으로 0 1 2  first는 첫번째인지 아닌지 last는 마지막인지 아닌지--%>
 
-	<c:forEach var="user" items="${userList }" varStatus="status">
-		<h4>${user } :::: ${status.count } ${status.index} ${status.first} ${status.last}</h4>
-	</c:forEach>
+	<%--테이블 형태로 해보기 부트스트랩 없이--%>
+	
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>나이</th>
+				<th>취미</th>
+			</tr>
+		</thead>
+		<tbody><!-- 하나의 변수 저장 user items에 실제 데이터 넣어야 하므로 el태그-->
+		<c:forEach var="user" items="${userList }" varStatus="status">
+			<tr>
+				<td>${user.name }</td><!-- 이 객체는 map 활용 -->
+				<td>${user.age }</td>
+				<td>${user.hobby }</td>
+			</tr>
+		</c:forEach>
+		</tbody>
+	</table>
+	
+	
+		
+	
 	
 </body>
 </html>
