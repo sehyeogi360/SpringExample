@@ -40,8 +40,14 @@ public class JSTLController {
 		//과제 아닌 과제 맵하나 만들어서 더 추가 해보기.
 		//오늘진짜 과제 연습문제 라이브러리2 샘플데이터로 태그 구성후 해보기
 		
-		model.addAttribute("fruitList", fruitList);
+		Map<String, Object> map2 = new HashMap<>();
+		map2.put("name", "임세혁");
+		map2.put("age", 29);
+		map2.put("hobby", "sleep");
+		userList.add(map2);
 		
+		model.addAttribute("fruitList", fruitList);
+		model.addAttribute("userList", userList);
 		return "jstl/ex02";
 	}
 	

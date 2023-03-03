@@ -43,5 +43,10 @@
 	<c:forEach var="fruit" items="${fruitList }" varStatus="status">
 		<h4>${fruit } :::: ${status.count } ${status.index} ${status.first} ${status.last}</h4>
 	</c:forEach><%--count는 숫자별로 1 2 3 인덱스는 인덱스 기준으로 0 1 2  first는 첫번째인지 아닌지 last는 마지막인지 아닌지--%>
+
+	<c:forEach var="user" items="${userList }" varStatus="status">
+		<h4>${user } :::: ${status.count } ${status.index} ${status.first} ${status.last}</h4>
+	</c:forEach>
+	
 </body>
 </html>
