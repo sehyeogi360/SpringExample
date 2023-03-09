@@ -62,6 +62,30 @@ public class NewUserController {//브라우저가 직접 요청청하고 응답�
 		return "ajax/user/input";
 	}
 	
+	// email 주소를 전달 받고, 중복여부를 확인한다.
+	// 중복 여부 결과를 response로 전달한다.	
+	@GetMapping("/is_duplicate")//email은 get
+	@ResponseBody//붙여주기
+	public Map<String, Boolean> isDuplicateEmail(@RequestParam("email") String email) {
+		
+		// 중복된 경우 {"is_duplicate":true}
+		// 중복되지 않은 경우 {"is_duplicate":false}
+		
+		// wrapper class로 타입잡아주기
+		Map<String, Boolean> resultMap = new HashMap<>();
+		
+		if(userBO.isDuplicateEmail(email)) {//애도 true false return
+			// 중복된 경우
+			resultMap.put("is_duplicate", true);
+		} else {
+			// 중복되지 않은경우
+			resultMap.put("is_duplicate", false);
+		}
+		
+		return resultMap;
+	}
+	
+	
 		
 	}
 

@@ -21,4 +21,6 @@ public interface UserDAO {
 	public User selectLastUser();
 	
 	public List<User> selectUserList();
+	
+	public int selectCountEmail(@Param("email") String email);//조회할 이메일 숫자세니까 int
 }

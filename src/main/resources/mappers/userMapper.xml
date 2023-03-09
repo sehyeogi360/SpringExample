@@ -53,6 +53,15 @@ useGeneratedKeys="true" keyProperty = "id"><!-- 직접 만드는게 아니라서
   		)
 </insert>
 
+<select id="selectCountEmail" parameterType="string" resultType="int"><!-- select라 해서 항상 resultType이 특정객체일필욘없다. -->
+	SELECT 
+		count(1)
+	 FROM 
+	 	`new_user`
+	  WHERE 
+	  	`email` = #{email};
+
+</select>
 
 
 

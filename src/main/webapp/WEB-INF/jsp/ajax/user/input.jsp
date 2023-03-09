@@ -11,13 +11,52 @@
 <!--  	<form method = "get" action="/ajax/user/add" id="addForm">  -->
 		<label>이름</label> <input type="text" name="name" id="nameInput"> <br>
 		<label>생년월일</label> <input type="text" name="birthday" id="birthdayInput"> <br>
-		<label>이메일</label> <input type="text" name="email" id="emailInput"> <br>
+		<label>이메일</label> <input type="text" name="email" id="emailInput"> <button type="button" id="duplicateBtn">중복확인</button> <br>
 		<label>자기소개</label> <input type="text" name="introduce" id="introduceInput"> <br>
 		<button type="submit" id="addBtn">추가</button>
 <!--	</form>-->
 	
 	<script>
 		$(document).ready(function(){//클릭과 폼메서드는 아무상관없는것. 빈칸있다고 떠도 add로 이동
+			
+			$("#duplicateBtn").on("click", function(){
+				let email = $("#emailInput").val();
+				
+				if(email == ""){
+					
+					alert("이메일을 입력하세요");
+					return ;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/ajax/user/is_duplicate"	
+					, data: {"email" : email}
+					, success:function(data){
+						// 중복된 경우 {"is_duplicate":true}
+						// 중복되지 않은 경우 {"is_duplicate":false}
+						
+						if(data.is_duplicate) {
+							// 중복 된 경우
+							alert("중복되었습니다");	
+						} else {
+							// 중복이 안된 경우
+							alert("사용가능한 이메일 입니다");
+								
+							}
+						}
+						
+					
+					, error:function(){
+						alert("중복확인 에러");	
+					}
+					
+				});
+				
+				
+			});
+			
+			
 			$("#addBtn").on("click", function(){//이번엔 폼안쓰기.
 			//	$("#addForm").on("submit", function() { //오류가 있음 뭐하나 빈칸있는데도 넘어가짐
 					let name = $("#nameInput").val();

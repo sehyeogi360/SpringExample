@@ -23,6 +23,7 @@
 				<td>${user.name }</td>
 				<td>${user.email }</td>
 				<td>${user.introduce }</td>
+				<td></td>
 			</tr>
 			</c:forEach>
 		</tbody>
