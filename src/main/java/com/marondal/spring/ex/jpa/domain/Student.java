@@ -35,4 +35,6 @@ public class Student {
 		@UpdateTimestamp
 		@Column(name="updatedAt")
 		private ZonedDateTime updatedAt;
+		
+		
 }

@@ -39,5 +39,5 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 		@Query(value="SELECT * FROM `new_student` WHERE `dreamJob` = :dreamJob", nativeQuery=true)
 		public List<Student> findByDreamJobNative(@Param("dreamJob") String dreamJob);
 
-		public Student addStudent(String name, String phoneNumber, String email, String dreamJob);
+		//public Student addStudent(String name, String phoneNumber, String email, String dreamJob);
 }
