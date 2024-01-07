@@ -2,6 +2,13 @@ package com.marondal.spring.ex.jpa.domain;
 
 import java.time.ZonedDateTime;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder=true)
