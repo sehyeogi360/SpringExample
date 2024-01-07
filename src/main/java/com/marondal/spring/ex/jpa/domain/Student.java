@@ -1,6 +1,6 @@
 package com.marondal.spring.ex.jpa.domain;
 
-
+import java.time.ZonedDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,7 +11,7 @@ package com.marondal.spring.ex.jpa.domain;
 
 public class Student {
 
-	// id, 이름, 전화번호, 이메일, 장래희망
+		// id, 이름, 전화번호, 이메일, 장래희망
 	
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)

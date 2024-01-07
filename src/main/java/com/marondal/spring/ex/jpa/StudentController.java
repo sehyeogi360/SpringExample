@@ -6,15 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marondal.spring.ex.jpa.domain.Student;
+import com.marondal.spring.ex.jpa.repository.StudentRepository;
 import com.marondal.spring.ex.jpa.service.StudentService;
 
-@RequestMapping("/jpa")
+@RequestMapping("/jpa/student")
 @RestController
 public class StudentController {
 	
 	@Autowired
-	private StudentService studentBO;
+	private StudentService studentService;
 	
+	@Autowired
+	private StudentRepository studentRepository;
 	// C:create
 	@GetMapping("/ex01/1")
 	public Student create() {
@@ -23,7 +26,7 @@ public class StudentController {
 			String email = "lecture@hagulu.com";
 			String dreamJob = "개발자";
 
-			Student student = studentBO.addStudent(name, phoneNumber, email, dreamJob);
+			Student student = studentRepository.addStudent(name, phoneNumber, email, dreamJob);
 
 			// save 된 객체를 리턴해주므로 student.getId()로 key를 바로 얻을 수도 있다.
 			

@@ -2,6 +2,7 @@ package com.marondal.spring.ex.jpa.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.marondal.spring.ex.jpa.domain.Student;
@@ -37,4 +38,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 		// 쿼리를 통해 특정 장래 희망을 가진 데이터 조회 
 		@Query(value="SELECT * FROM `new_student` WHERE `dreamJob` = :dreamJob", nativeQuery=true)
 		public List<Student> findByDreamJobNative(@Param("dreamJob") String dreamJob);
+
+		public Student addStudent(String name, String phoneNumber, String email, String dreamJob);
 }
