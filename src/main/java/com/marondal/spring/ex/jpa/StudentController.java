@@ -5,25 +5,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.marondal.spring.ex.jpa.bo.StudentBO;
-import com.marondal.spring.ex.jpa.model.StudentEntity;
+import com.marondal.spring.ex.jpa.domain.Student;
+import com.marondal.spring.ex.jpa.service.StudentService;
 
 @RequestMapping("/jpa")
 @RestController
-public class JPAEx01RestController {
+public class StudentController {
 	
 	@Autowired
-	private StudentBO studentBO;
+	private StudentService studentBO;
 	
 	// C:create
 	@GetMapping("/ex01/1")
-	public StudentEntity create() {
+	public Student create() {
 			String name = "김인규";
 			String phoneNumber = "010-1111-2222";
 			String email = "lecture@hagulu.com";
 			String dreamJob = "개발자";
 
-			StudentEntity student = studentBO.addStudent(name, phoneNumber, email, dreamJob);
+			Student student = studentBO.addStudent(name, phoneNumber, email, dreamJob);
 
 			// save 된 객체를 리턴해주므로 student.getId()로 key를 바로 얻을 수도 있다.
 			
@@ -32,9 +32,9 @@ public class JPAEx01RestController {
 	
 	// U:update
 	@GetMapping("/ex01/2")
-	public StudentEntity update() {
+	public Student update() {
 			// id가 7번인 dreamJob을 변경
-			StudentEntity student = studentBO.updateStudentDreamJobById(7, "디자이너");
+			Student student = studentBO.updateStudentDreamJobById(7, "디자이너");
 			return student;
 	}
 
