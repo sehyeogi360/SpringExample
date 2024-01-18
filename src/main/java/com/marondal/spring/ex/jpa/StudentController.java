@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import com.marondal.spring.ex.jpa.domain.Student;
 import com.marondal.spring.ex.jpa.repository.StudentRepository;
@@ -23,6 +23,7 @@ public class StudentController {
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	
 	@GetMapping("/create")
 	@ResponseBody
 	public Student createStudent() {
@@ -65,29 +66,29 @@ public class StudentController {
 		List<Student> studentList = studentRepository.findAll();	
 		
 		// id 기준으로 내림 차순 전체 조회 
-		List<Student> studentList = studentRepository.findAllByOrderByIdDesc();
+		List<Student> studentList2 = studentRepository.findAllByOrderByIdDesc();
 		
 		// id 기준 내림차순 하나만 조회 
-		List<Student> studentList = studentRepository.findTop1ByOrderByIdDesc();
+		List<Student> studentList3 = studentRepository.findTop1ByOrderByIdDesc();
 		
 		// 전달한 이름과 일치하는 데이터만 조회 
-		List<Student> studentList = studentRepository.findByName("유재석");
+		List<Student> studentList4 = studentRepository.findByName("유재석");
 		
 		// 이름 목록과 일치하는 모든 데이터 조회 
 		// 유재석, 조세호 
 		List<String> nameList = new ArrayList<>();
 		nameList.add("유재석");
 		nameList.add("조세호");
-		List<Student> studentList = studentRepository.findByNameIn(nameList);
+		List<Student> studentList5 = studentRepository.findByNameIn(nameList);
 		
 		// 이메일에 naver가 포함된 학생 조회 
-		List<Student> studentList = studentRepository.findByEmailContaining("naver");
+		List<Student> studentList6 = studentRepository.findByEmailContaining("naver");
 		
 		// 이름이 유씨인 학생 조회
-		List<Student> studentList = studentRepository.findByNameStartingWith("조");
+		List<Student> studentList7 = studentRepository.findByNameStartingWith("조");
 		
 		// id 1 ~ 3 범위 조회 
-		List<Student> studentList = studentRepository.findByIdBetweenOrderByIdDesc(1, 3);
+		List<Student> studentList8 = studentRepository.findByIdBetweenOrderByIdDesc(1, 3);
 		
 		return studentList;
 	}
@@ -103,12 +104,6 @@ public class StudentController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
 	@GetMapping("/lombok/test")
 	@ResponseBody
 	public void test() {
@@ -117,11 +112,11 @@ public class StudentController {
 		student.setName("김인규");
 		student.setDreamJob("개발자");
 		student.setPhoneNumber("010-1234-5678");
-		Student student = Student.builder()
-				.name("김인규")
-				.dreamJob("개발자")
-				.phoneNumber("010-1234-5678")
-				.build();
+//		Student student = Student.builder()
+//				.name("김인규")
+//				.dreamJob("개발자")
+//				.phoneNumber("010-1234-5678")
+//				.build();
 		
 		
 		System.out.println(student);
